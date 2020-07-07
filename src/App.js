@@ -2,6 +2,9 @@ import React,{Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Additem from './AddItem';
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 
 class App extends Component {
   constructor(props)
@@ -17,13 +20,13 @@ class App extends Component {
   render()
   {
     const cartlist=this.state.items.map((each,index)=>
-    <li key={index}>{each.product}  {each.amount}</li>
+    <ListItem key={index}><ListItemText primary={each.product}  secondary={each.amount}/></ListItem>
     );
 
     return (
-      <div className="App">
+      <div className="App" style={{margin:"auto"}}>
         <Additem additem={this.additem} />
-        {cartlist}
+        <List style={{margin:"auto"}}>{cartlist}</List>
       </div>
     );
   }
